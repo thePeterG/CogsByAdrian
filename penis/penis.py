@@ -3,9 +3,11 @@ import random
 from redbot.core import commands
 from redbot.core.utils.chat_formatting import pagify
 
-
 class Penis(commands.Cog):
     """Penis related commands."""
+
+    def __init__(self, bot):
+        self.bot = bot
 
     @commands.command()
     async def penis(self, ctx, *users: discord.Member):
@@ -32,10 +34,14 @@ class Penis(commands.Cog):
             dongs[user] = "8{}D".format("=" * length)
 
         random.setstate(state)
-        dongs = sorted(dongs.items(), key=lambda x: x[1])
+        dongs = sorted(dongs.items(), key=lambda x: len(x[1]))
 
         for user, dong in dongs:
             msg += "**{}'s size:**\n{}\n".format(user.display_name, dong)
 
         for page in pagify(msg):
             await ctx.send(page)
+
+
+def setup(bot):
+    bot.add_cog(Penis(bot))
