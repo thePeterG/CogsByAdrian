@@ -1,4 +1,4 @@
-from .insult import Insult
+from .penis import Insult
 
-def setup(bot):
-  bot.add_cog(Insult())
+async def setup(bot):
+    await bot.add_cog(Insult(bot))
