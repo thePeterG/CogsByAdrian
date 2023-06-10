@@ -41,7 +41,3 @@ class Penis(commands.Cog):
 
         for page in pagify(msg):
             await ctx.send(page)
-
-
-def setup(bot):
-    bot.add_cog(Penis(bot))
