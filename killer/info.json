@@ -1,5 +1,5 @@
 {
-  "author": ["DesignByAdrian (ThinkAdrian#1186)"],
+  "author": ["DesignByAdrian (ThinkAdrian#1186)", "thePeterG"],
   "install_msg": "Bang bang, you're dead! Caution: some of the commands have violent and/or sexual responses!",
   "name": "Killer",
   "disabled": false,
@@ -7,5 +7,4 @@
   "description": "Slap, punch, stab unsuspecting neighbours!",
   "tags": ["fun"],
   "hidden": false,
-  "min_python_version": [3, 6, 0]
 }
