@@ -1,5 +1,5 @@
 {
-  "author": ["DesignByAdrian (ThinkAdrian#1186)"],
+  "author": ["DesignByAdrian (ThinkAdrian#1186)", "thePeterG"],
   "description": "Usage: [p]insult <user>\n",
   "short": "Insult a user creatively.",
   "name": "Insult",
