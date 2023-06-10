@@ -4,7 +4,7 @@
 [![Discord python framework][badge-discord]][discord.py]
 ![Version][badge-version]
 
-Attempting to Update these cogs for Redbot 3.5 for myself.
+Attempting to Update these cogs for Redbot 3.5 for myself origionally creaded by CogsByAdrian.
 
 Various fun and/or useful plugins for [Discord Red][discord-red].
 
@@ -12,24 +12,9 @@ To add the cogs to your instance please do: `[p]repo add CogsByAdrian https://gi
 
 ## Collection
 
-- **[Crier](#crier)** Send messages to channels either as text, or 🇸 🇭 🇴 🇺 🇹.
 - **[Insult](#insult)** Insult a user.
 - **[Killer](#killer)** Do unto others as you would have them do unto you.
 - **[Penis](#penis)** Detects users' penis size with maximum accuracy.
-- **[UserInfo](#userinfo)** Displays bite-sized user info
-- Lootbox _TBA_
-- UrbanBot _TBA_
-- Responder _TBA_
-- TWSS _TBA_
-
-### <a name="crier"></a>Crier
-
-```
-[p]say #channel_name Howdy, @user! 🤠
-[p]shout #channel_name Anno 2077
-```
-
-**Say** accepts any character including emojis, **Shout** only accepts latin characters or numbers as it converts your words into regional indicator symbols which are nice big, blue, and bold letters using Discord's emoji set (:regional_character_a: :four: for example)
 
 ### <a name="insult"></a>Insult
 
@@ -60,13 +45,7 @@ Each action has a low chance of either missing the target or critical hit 😉, 
 [p]penis @user1 @user2 @user3 etc
 ```
 
-Convertion of the original TwentySix cog for V2.
-
-### <a name="userinfo"></a>UserInfo
-
-```
-[p]userid @user
-```
+Conversion of the original TwentySix cog for V2.
 
 ## Support
 
