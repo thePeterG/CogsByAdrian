@@ -1,6 +1,6 @@
 {
-  "author": ["Twentysix", "DesignByAdrian (ThinkAdrian#1186)"],
-  "DESCRIPTION": "Usage: [p]penis <user>\nThis is 100% accurate.",
+  "author": ["Twentysix", "DesignByAdrian", "thePeterG],
+  "DESCRIPTION": "Usage: [p]penis <user> This is 100% accurate.",
   "SHORT": "Detects users' penis size with maximum accuracy.",
   "NAME": "Penis",
   "TAGS": ["fun"]
