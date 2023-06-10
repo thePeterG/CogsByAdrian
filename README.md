@@ -8,7 +8,7 @@ Attempting to Update these cogs for Redbot 3.5 for myself origionally creaded by
 
 Various fun and/or useful plugins for [Discord Red][discord-red].
 
-To add the cogs to your instance please do: `[p]repo add CogsByAdrian https://github.com/thePeterG/CogsByAdrian`
+To add the cogs to your instance please do: `[p]repo add CogsByPeterG https://github.com/thePeterG/CogsByAdrian`
 
 ## Collection
 
