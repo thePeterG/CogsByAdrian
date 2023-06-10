@@ -6,7 +6,7 @@ from redbot.core import commands
 class Insult(commands.Cog):
     """Polite user messaging."""
 
-    def __init__(self):
+    def __init__(self,bot):
         self.headers = {
             'X-Mashape-Key': 'kPgrTWlClqmshjyMDorgCZ0TcS6kp1ePfLUjsnCYR170S2VdWj',
             'Accept': 'text/plain',
