@@ -6,8 +6,7 @@ from redbot.core import commands
 class Insult(commands.Cog):
     """Polite user messaging."""
 
-    def __init__(self, bot):
-        self.bot = bot
+    def __init__(self):
         self.headers = {
             'X-Mashape-Key': 'kPgrTWlClqmshjyMDorgCZ0TcS6kp1ePfLUjsnCYR170S2VdWj',
             'Accept': 'text/plain',
@@ -18,8 +17,15 @@ class Insult(commands.Cog):
         }
 
     def getActors(self, offender, target):
-        bot = self.bot.user
-        return bot, offender, target
+        return {
+            'id': offender.id,
+            'nick': offender.display_name,
+            'formatted': "<@{}>".format(offender.id)
+        }, {
+            'id': target.id,
+            'nick': target.display_name,
+            'formatted': target.mention
+        }
 
     @commands.command()
     async def insult(self, ctx, user: discord.Member):
@@ -30,17 +36,15 @@ class Insult(commands.Cog):
 
         async with aiohttp.ClientSession(headers=self.headers) as session:
             async with session.get('https://evilinsult.com/generate_insult.php?lang=en&type=text', params=self.params) as resp:
-
                 if resp.status == 200:
-                    bot, offender, target = self.getActors(ctx.message.author, user)
+                    offender, target = self.getActors(ctx.author, user)
                     text = await resp.text()
 
-                    if target == bot:
-                        insult = f"{offender.mention}, {text.lower()}"
+                    if target['id'] == ctx.bot.user.id:
+                        insult = "{}, {}".format(offender['formatted'], text.lower())
                     else:
-                        insult = f"{target.mention}, {text.lower()}"
+                        insult = "{}, {}".format(target['formatted'], text.lower())
 
                     await ctx.send(insult)
-
                 else:
-                    await ctx.send(f"I've got nothing to say to the likes of you (Code {resp.status})")
+                    await ctx.send("I've got nothing to say to the likes of you (Code {})".format(resp.status))
