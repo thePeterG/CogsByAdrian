@@ -6,7 +6,8 @@ from redbot.core import commands
 class Insult(commands.Cog):
     """Polite user messaging."""
 
-    def __init__(self):
+    def __init__(self, bot):
+        self.bot = bot
         self.headers = {
             'X-Mashape-Key': 'kPgrTWlClqmshjyMDorgCZ0TcS6kp1ePfLUjsnCYR170S2VdWj',
             'Accept': 'text/plain',
@@ -16,8 +17,9 @@ class Insult(commands.Cog):
             'mode': 'random',
         }
 
-    def getActors(self, bot, offender, target):
-        return {'id': bot.id, 'nick': bot.display_name, 'formatted': bot.mention}, {'id': offender.id, 'nick': offender.display_name, 'formatted': "<@{}>".format(offender.id)}, {'id': target.id, 'nick': target.display_name, 'formatted': target.mention}
+    def getActors(self, offender, target):
+        bot = self.bot.user
+        return bot, offender, target
 
     @commands.command()
     async def insult(self, ctx, user: discord.Member):
@@ -29,21 +31,16 @@ class Insult(commands.Cog):
         async with aiohttp.ClientSession(headers=self.headers) as session:
             async with session.get('https://evilinsult.com/generate_insult.php?lang=en&type=text', params=self.params) as resp:
 
-                if (resp.status == 200):
-
-                    bot, offender, target = self.getActors(
-                        ctx.bot.user, ctx.message.author, user)
-
+                if resp.status == 200:
+                    bot, offender, target = self.getActors(ctx.message.author, user)
                     text = await resp.text()
 
-                    if target['id'] == bot['id']:
-                        insult = "{}, {}".format(
-                            offender['formatted'], text.lower())
+                    if target == bot:
+                        insult = f"{offender.mention}, {text.lower()}"
                     else:
-                        insult = "{}, {}".format(
-                            target['formatted'], text.lower())
+                        insult = f"{target.mention}, {text.lower()}"
 
                     await ctx.send(insult)
 
                 else:
-                    await ctx.send("I've got nothing to say to the likes of you (Code {})".format(resp.status))
+                    await ctx.send(f"I've got nothing to say to the likes of you (Code {resp.status})")
